@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        :root {
+            --primary: #971712;
+            --secondary: #aa7018;
+            --dark: #333333;
+            --light: #f9f9f9;
+            --accent: #d92b04;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><rect fill="rgba(255,255,255,0.05)" x="0" y="0" width="50" height="50"/><rect fill="rgba(255,255,255,0.05)" x="50" y="50" width="50" height="50"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        h2 {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #e9bb91;
+            font-weight: 400;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .booking-form {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 8px rgba(170, 112, 24, 0.3);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 40px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            accent-color: var(--secondary);
+        }
+        
+        .error {
+            color: var(--primary);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        input:invalid + .error {
+            display: block;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(151, 23, 18, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(151, 23, 18, 0.4);
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        
+        .name {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 14px;
+            text-align: right;
+            z-index: 2;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="container">
+            <h1>Please select a package</h1>
+            <h2>Payment will be emailed to you later :3</h2>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="booking-form">
+            <h3 class="form-title">Travel Options</h3>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="groupSize">Tour Group Size:</label>
+                        <input 
+                        type="number"
+                        id="inputage"
+                        name="age"
+                        placeholder="Enter Tour Size (1-15)"
+                        min="1"
+                        max="15"
+                    >
+                    <span class="error">Please enter a valid group size between 1 and 15</span>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="onland" name="onland">
+                    <label for="onland">Buy your own Ticket? (Join on land)</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputname">Full Name:</label>
+                    <input 
+                        type="text"
+                        id="inputname"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                    <span class="error">Please enter your name</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputage">Age:</label>
+                    <input 
+                        type="number"
+                        id="inputage"
+                        name="age"
+                        placeholder="Enter your age"
+                        min="0"
+                        max="120"
+                    >
+                    <span class="error">Please enter a valid age between 0 and 120</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputphone">Telephone:</label>
+                    <input 
+                        type="tel"
+                        id="inputphone"
+                        name="phone"
+                        placeholder="Enter your phone number (e.g., 123-456-7890)"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    >
+                    <span class="error">Please enter a valid phone number format (e.g., 123-456-7890)</span>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button type="submit" id="submitbtn" class="submit-btn">
+                        <i class="fas fa-check-circle"></i> Submit Booking
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2025 Hammie Tours. 6733092021 Tanabodhi Mukura.
+    </footer>
+    
+    <script src="booking.js"></script>
+</body>
+</html>
