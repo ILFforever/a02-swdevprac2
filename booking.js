@@ -12,7 +12,9 @@
         document.getElementById("onland").addEventListener("change", function() {
             if(this.checked) {
                 let confirmed = confirm("Would you like to buy your own tickets?");
-                if(confirmed) {
+                if(!confirmed) {
+                    this.checked = false;
+                } else {
                     alert("Self Tickets Confirmation!");
                 }
             }
